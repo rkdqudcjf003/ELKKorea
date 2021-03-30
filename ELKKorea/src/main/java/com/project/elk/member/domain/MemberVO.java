@@ -20,7 +20,7 @@ public class MemberVO {
 		return "MemberVO [userNo=" + userNo + ", id=" + id + ", pwd=" + pwd + ", hp=" + hp + ", email1=" + email1
 				+ ", email2=" + email2 + ", address1=" + address1 + ", address2=" + address2 + ", zipcode=" + zipcode
 				+ ", regDate=" + regDate + ", outDate=" + outDate + ", outUser=" + outUser + "]";
-	}//멤버 수정수정
+	}//멤버 수정수정 테스테스테스테스
 	
 	
 }
