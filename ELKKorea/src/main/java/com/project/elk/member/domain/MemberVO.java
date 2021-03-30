@@ -15,4 +15,12 @@ public class MemberVO {
 	private Timestamp  	regDate;//` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
 	private Timestamp  	outDate;//` timestamp NULL DEFAULT NULL,
 	private String  	outUser;//` char(1) NOT NULL DEFAULT 'N',
+	@Override
+	public String toString() {
+		return "MemberVO [userNo=" + userNo + ", id=" + id + ", pwd=" + pwd + ", hp=" + hp + ", email1=" + email1
+				+ ", email2=" + email2 + ", address1=" + address1 + ", address2=" + address2 + ", zipcode=" + zipcode
+				+ ", regDate=" + regDate + ", outDate=" + outDate + ", outUser=" + outUser + "]";
+	}
+	
+	
 }
