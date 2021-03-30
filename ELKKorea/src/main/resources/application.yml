@@ -1,0 +1,25 @@
+server:
+  port: 8222
+
+spring:
+  mvc:
+    converters:
+     preferred-json-mapper: gson
+  datasource:
+    hikari:
+      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+      jdbc-url: jdbc:log4jdbc:mysql://localhost:3306/elkkor?characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+      username: elkkor
+      password: elkkor
+      connection-test-query: SELECT NOW() FROM dual
+  devtools: 
+    livereload:
+      enabled: true
+      
+spring.main.allow-bean-definition-overriding: true
+
+#MyBatis
+mybatis.configuration:
+    default-executor-type: REUSE
+    map-underscore-to-camel-case: true
+    
