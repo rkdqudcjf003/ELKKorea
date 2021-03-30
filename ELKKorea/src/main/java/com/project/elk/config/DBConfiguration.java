@@ -2,7 +2,6 @@ package com.project.elk.config;
 
 import javax.sql.DataSource;
 
-
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -15,17 +14,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+import com.project.elk.ElkKoreaApplication;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-
-import com.project.elk.ElkKoreaApplication;
-
 
 @Configuration
 @PropertySource("classpath:/application.yml")
 public class DBConfiguration {
-public static void main(String[] args) {
-
 	@Autowired
 	private ApplicationContext applicationContext;
 
@@ -35,7 +30,7 @@ public static void main(String[] args) {
 		return new org.apache.ibatis.session.Configuration();
 	}
 
-	private static final Logger log = LoggerFactory.getLogger(ElkKorApplication.class);
+	private static final Logger log = LoggerFactory.getLogger(ElkKoreaApplication.class);
 
 	@Bean
 	@ConfigurationProperties(prefix = "spring.datasource.hikari")
@@ -58,7 +53,7 @@ public static void main(String[] args) {
 		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource);
 		sessionFactory.setTypeAliasesPackage("com.project.elk.*");
-		sessionFactory.setMapperLocations(applicationContext.getResources("classpath:kr.co.elk.*.mapper/*.xml"));
+		sessionFactory.setMapperLocations(applicationContext.getResources("classpath:com.project.elk.*.mapper/*.xml"));
 		sessionFactory.setConfiguration(mybatisConfg());
 		return sessionFactory.getObject();
 
@@ -68,5 +63,5 @@ public static void main(String[] args) {
 	public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
 		return new SqlSessionTemplate(sqlSessionFactory);
 	}
-}
+
 }
