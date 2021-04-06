@@ -1,3 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.elk.board.mapper.BoardMapper"></mapper>
+<mapper namespace="com.project.elk.board.mapper.BoardMapper">
+<resultMap id="BoardResult"	type="com.project.elk.board.domain.BoardVO">
+		<result column="board_idx" property="boardIdx" />
+		<result column="title" property="title" />
+		<result column="writer" property="writer" />
+		<result column="content" property="content" />
+		<result column="view_cnt" property="viewCnt" />
+		<result column="notice_yn" property="noticeYn" />
+		<result column="delete_yn" property="deleteYn" />
+	</resultMap>
+
+	<sql id="BoardColumns">
+		board_idx
+		, title
+		, writer
+		, content
+		, category
+		, view_cnt
+		, notice_yn
+		, delete_yn
+	</sql>
+	
+	<select id="boardList" resultMap="BoardResult">
+		SELECT board_idx, title, writer, content, category, view_cnt, notice_yn, delete_yn
+		FROM board
+	</select>
+	
+	<select id="selectOneBoard" resultMap="BoardResult">
+		SELECT board_idx, title, writer, content, category, view_cnt, notice_yn, delete_yn
+		FROM board
+		WHERE board_idx = #{boardIdx}
+	</select>
+	
+	<insert id="insertBoard">
+		<selectKey resultType="int" keyProperty="boardIdx" order="AFTER">
+             SELECT LAST_INSERT_ID()
+        </selectKey>
+		INSERT INTO	board (board_idx, title, writer, content, category, notice_yn, delete_yn)
+		VALUES (#{boardIdx}, #{title}, #{writer}, #{content}, #{viewCnt}, #{notice_yn}, #{delete_yn})
+	</insert>
+	
+	<!-- <update id="updateBoard" parameterType="com.project.elk.board.domain.BoardVO">
+		UPDATE board
+		SET title = #{title}, writer = #{writer}, content = #{content}, category = #{category}, delete_yn = #{delete_yn}
+		WHERE board_idx = #{boardIdx}
+	</update> -->
+</mapper>

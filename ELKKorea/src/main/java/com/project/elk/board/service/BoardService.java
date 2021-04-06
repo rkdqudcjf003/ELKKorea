@@ -1,5 +1,18 @@
 package com.project.elk.board.service;
 
+import java.util.List;
+
+import com.project.elk.board.domain.BoardVO;
+
+
 public interface BoardService {
-// 4번째 테스트
+
+	public List<BoardVO> boardList();
+
+	public BoardVO selectOneBoard(int boardIdx);
+
+	public BoardVO insertBoard(BoardVO boardVo);
+
+	public void updateBoard(BoardVO boardVo);
+
 }
