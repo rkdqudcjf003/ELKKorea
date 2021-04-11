@@ -15,6 +15,6 @@ public interface BoardMapper {
 
 	public BoardVO insertBoard(BoardVO boardVo);
 
-//	public void updateBoard(BoardVO boardVo);
+	//public void updateBoard(BoardVO boardVo);
 
 }

@@ -13,6 +13,6 @@ public interface BoardService {
 
 	public BoardVO insertBoard(BoardVO boardVo);
 
-	public void updateBoard(BoardVO boardVo);
+	/*public void updateBoard(BoardVO boardVo);*/
 
 }

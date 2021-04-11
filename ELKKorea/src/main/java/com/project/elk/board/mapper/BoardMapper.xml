@@ -40,10 +40,5 @@
 		INSERT INTO	board (board_idx, title, writer, content, category, notice_yn, delete_yn)
 		VALUES (#{boardIdx}, #{title}, #{writer}, #{content}, #{viewCnt}, #{notice_yn}, #{delete_yn})
 	</insert>
-	
-	<!-- <update id="updateBoard" parameterType="com.project.elk.board.domain.BoardVO">
-		UPDATE board
-		SET title = #{title}, writer = #{writer}, content = #{content}, category = #{category}, delete_yn = #{delete_yn}
-		WHERE board_idx = #{boardIdx}
-	</update> -->
+
 </mapper>

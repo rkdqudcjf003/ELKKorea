@@ -30,10 +30,10 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.insertBoard(boardVo);
 
 	}
+/*
+	@Override
+	public void updateBoard(BoardVO boardVo) {
+		boardMapper.updateBoard(boardVo);
 
-//	@Override
-//	public void updateBoard(BoardVO boardVo) {
-//		boardMapper.updateBoard(boardVo);
-//
-//	}
+	}*/
 }
