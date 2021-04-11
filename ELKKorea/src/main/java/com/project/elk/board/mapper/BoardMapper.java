@@ -5,16 +5,22 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.project.elk.board.domain.BoardVO;
+import com.project.elk.board.domain.Search;
 
 @Mapper
 public interface BoardMapper {
 
 	public List<BoardVO> boardList();
 
+	public int getBoardListCnt(Search search);
+
 	public BoardVO selectOneBoard(int boardIdx);
 
-	public BoardVO insertBoard(BoardVO boardVo);
+	public int insertBoard(BoardVO boardVo);
 
-//	public void updateBoard(BoardVO boardVo);
+	public int updateBoard(int boardIdx, BoardVO boardVo);
+
+	public BoardVO findByIdx(int boardIdx);
+
 
 }

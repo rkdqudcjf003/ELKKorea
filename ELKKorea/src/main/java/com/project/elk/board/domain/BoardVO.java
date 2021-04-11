@@ -1,10 +1,8 @@
 package com.project.elk.board.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class BoardVO {
 	private int boardIdx;
 	private String title;
@@ -15,3 +13,4 @@ public class BoardVO {
 	private String noticeYn;
 	private String deleteYn;
 }
+	
