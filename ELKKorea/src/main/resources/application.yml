@@ -1,6 +1,12 @@
 server:
   port: 8222
-
+  
+#MyBatis
+mybatis:
+  config-location: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    
 spring:
   mvc:
     converters:
@@ -15,11 +21,3 @@ spring:
   devtools: 
     livereload:
       enabled: true
-      
-spring.main.allow-bean-definition-overriding: true
-
-#MyBatis
-mybatis.configuration:
-    default-executor-type: REUSE
-    map-underscore-to-camel-case: true
-    

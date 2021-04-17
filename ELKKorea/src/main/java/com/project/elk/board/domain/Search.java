@@ -3,7 +3,7 @@ package com.project.elk.board.domain;
 import lombok.Data;
 
 @Data
-public class Search extends PageDTO {
+public class Search extends PagingUtil {
 	private String searchType;
 	private String keyword;
 

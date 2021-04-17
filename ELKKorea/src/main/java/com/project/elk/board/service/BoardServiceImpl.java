@@ -1,11 +1,14 @@
 package com.project.elk.board.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.elk.board.domain.BoardVO;
+import com.project.elk.board.domain.PagingUtil;
 import com.project.elk.board.domain.Search;
 import com.project.elk.board.mapper.BoardMapper;
 
@@ -16,8 +19,12 @@ public class BoardServiceImpl implements BoardService {
 	BoardMapper boardMapper;
 
 	@Override
-	public List<BoardVO> boardList() {
-		return boardMapper.boardList();
+	public List<BoardVO> getBoardList(List<BoardVO> boardList) {
+		return boardMapper.getBoardList(boardList);
+	}
+
+	public int getBoardListCnt(Search search) {
+		return boardMapper.getBoardListCnt(search);
 	}
 
 	@Override
@@ -46,8 +53,4 @@ public class BoardServiceImpl implements BoardService {
 
 	}
 
-	@Override
-	public int getBoardListCnt(Search search) {
-		return boardMapper.getBoardListCnt(search);
-	}
 }

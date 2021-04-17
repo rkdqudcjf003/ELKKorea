@@ -23,9 +23,41 @@
 		, delete_yn
 	</sql>
 	
-	<select id="boardList" resultMap="BoardResult">
+	<select id="getPagingBoardList" resultMap="BoardResult">
 		SELECT board_idx, title, writer, content, category, view_cnt, notice_yn, delete_yn
 		FROM board
+			<trim prefix="WHERE" prefixOverrides="AND|OR">
+				<if test="searchType=='title' and keyword != null and keyword != '' ">
+					AND title LIKE CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="searchType=='content' and keyword != null and keyword != '' ">
+					AND content LIKE CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="searchType=='reg_id' and keyword != null and keyword != '' ">
+					AND writer LIKE CONCAT('%', #{keyword}, '%')
+				</if>	
+			</trim>
+		ORDER BY board_idx DESC
+		LIMIT #{startList}, #{listSize}
+	</select>
+	
+	<select id="getBoardListCnt" resultType="int">
+		SELECT count(*) as boardListCnt
+		FROM board
+		WHERE delete_yn = "N"
+			<trim prefix="WHERE" prefixOverrides="AND|OR">
+				<if test="keyword != null and keyword != '' ">
+					<if test="searchType=='title'">
+						AND title like CONCAT('%', #{keyword}, '%')
+					</if>
+					<if test="searchType=='content'">
+						AND content like CONCAT('%', #{keyword}, '%')
+					</if>
+					<if test="searchType=='reg_id'">
+						AND writer like CONCAT('%', #{keyword}, '%')
+					</if>
+				</if>
+			</trim>
 	</select>
 	
 	<select id="selectOneBoard" resultMap="BoardResult">

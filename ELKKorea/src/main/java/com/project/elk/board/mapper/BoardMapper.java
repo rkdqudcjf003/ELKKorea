@@ -9,8 +9,7 @@ import com.project.elk.board.domain.Search;
 
 @Mapper
 public interface BoardMapper {
-
-	public List<BoardVO> boardList();
+	public List<BoardVO> getBoardList(List<BoardVO> boardList);
 
 	public int getBoardListCnt(Search search);
 
@@ -21,6 +20,8 @@ public interface BoardMapper {
 	public int updateBoard(int boardIdx, BoardVO boardVo);
 
 	public BoardVO findByIdx(int boardIdx);
+
+
 
 
 }
