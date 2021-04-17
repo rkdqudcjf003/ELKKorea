@@ -19,8 +19,8 @@ public class BoardServiceImpl implements BoardService {
 	BoardMapper boardMapper;
 
 	@Override
-	public List<BoardVO> getBoardList(List<BoardVO> boardList) {
-		return boardMapper.getBoardList(boardList);
+	public List<BoardVO> getBoardList() {
+		return boardMapper.getBoardList();
 	}
 
 	public int getBoardListCnt(Search search) {

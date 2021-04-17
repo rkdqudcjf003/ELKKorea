@@ -1,6 +1,8 @@
 package com.project.elk.board.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -26,25 +28,31 @@ public class BoardController {
 	private BoardService boardService;
 
 	@GetMapping(value = "/board/list")
-	public List<BoardVO> boardList(Model model, @RequestParam(required = false, defaultValue = "1") int page,
-			@RequestParam(required = false, defaultValue = "1") int range,
-			@RequestParam(required = false, defaultValue = "title") String searchType,
-			@RequestParam(required = false) String keyword) throws Exception {
-		Search search = new Search();
-		search.setSearchType(searchType);
-		search.setKeyword(keyword);
-
-		// 전체 게시글 개수
-		int boardListCnt = boardService.getBoardListCnt(search);
-		search.pageInfo(page, range, boardListCnt);
-
-		// PageDTO 객체생성
-		PagingUtil PageDTO = new PagingUtil();
-		PageDTO.pageInfo(page, range, boardListCnt);
-		model.addAttribute("pagingData", search);
-		List<BoardVO> boardList = boardService.getBoardList(search);
-
-//		return boardService.getBoardList(boardList);
+	public List<BoardVO> boardList() throws Exception {
+		/*Model model, @RequestParam(required = false, defaultValue = "1") int page,
+		@RequestParam(required = false, defaultValue = "1") int range,
+		@RequestParam(required = false, defaultValue = "title") String searchType,
+		@RequestParam(required = false) String keyword*/
+//		Search search = new Search();
+//		search.setSearchType(searchType);
+//		search.setKeyword(keyword);
+//
+//		// 전체 게시글 개수
+//		int boardListCnt = boardService.getBoardListCnt(search);
+//		PagingUtil pagingData = new PagingUtil();
+//		pagingData = search.pageInfo(page, range, boardListCnt);
+//
+//		// PageDTO 객체생성
+//		PagingUtil PageDTO = new PagingUtil();
+//		Map result = null;
+//		result = new HashMap<>(); 
+//		result.put("pagingData", result).pageInfo(page, range, boardListCnt);
+//		result.put("pagingDate", result).pageInfo(page, range, boardListCnt);
+////		model.addAttribute("pagingData", search);
+////		List<BoardVO> boardList = boardService.getBoardList(search);
+//
+//		return boardService.getBoardList(result);
+		return boardService.getBoardList();
 	}
 
 	@GetMapping(value = "/board/read/{boardIdx}")

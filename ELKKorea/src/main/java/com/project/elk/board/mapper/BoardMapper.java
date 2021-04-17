@@ -9,7 +9,7 @@ import com.project.elk.board.domain.Search;
 
 @Mapper
 public interface BoardMapper {
-	public List<BoardVO> getBoardList(List<BoardVO> boardList);
+	public List<BoardVO> getBoardList();
 
 	public int getBoardListCnt(Search search);
 
